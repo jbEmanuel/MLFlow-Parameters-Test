@@ -1,0 +1,30 @@
+name: download_data
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      url:
+        description: URL of the file to download
+        type: uri
+      artifact_name:
+        description: Name for the W&B artifact that will be created
+        type: str
+      artifact_type:
+        description: Type of the artifact to create
+        type: str
+        default: raw_data
+      project_name:
+        description: W&B Project Name 
+        type: str
+        default: Google Trends 
+      artifact_description:
+        description: Description for the artifact
+        type: str
+
+    command: >-
+      python download_data.py --url {url} \
+                              --artifact_name {artifact_name} \
+                              --artifact_type {artifact_type} \
+                              --project_name {project_name} \
+                              --artifact_description {artifact_description}
